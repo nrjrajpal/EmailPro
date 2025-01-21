@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* bg-[#E4DED3]/80 */
+@layer utilities {
+  .navbar-effect {
+    background-color: transparent;
+    background-image: radial-gradient(
+      transparent 1px,
+      var(--token-f32baa44-90b8-42a5-8bca-ffba9d95b23a, #E4DED3) 2px
+    );
+    background-size: 4px 4px;
+    backdrop-filter: blur(2px);
+    mask: linear-gradient(rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    opacity: 1;
+  }
+}
