@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#E4DED3]`}
       >
-        <div className="w-full flex">
+        <div className="w-full flex justify-center">
           <Navigation />
           {children}
         </div>

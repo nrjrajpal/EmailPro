@@ -1,6 +1,6 @@
 export default function Navigation() {
   return (
-    <nav className="navigation fixed grid grid-cols-[70%_30%] lg:grid-cols-[35%_30%_35%] h-24 w-full  max-w-screen-2xl z-10 navbar-effect pb-6">
+    <nav className="navigation fixed grid grid-cols-[70%_30%] lg:grid-cols-[25%_50%_25%] h-24 w-full  max-w-screen-2xl z-10 navbar-effect pb-6">
       <div className="flex pl-5 sm:pl-8 md:left-auto items-center gap-2 sm:gap-0 h-full">
         <svg
           width="40"
@@ -20,7 +20,7 @@ export default function Navigation() {
           EmailPro
         </span>
       </div>
-      <div className="hidden lg:grid lg:grid-cols-3 text-base text-black lg:items-center font-jakarta">
+      <div className="hidden lg:grid lg:grid-cols-3 text-base text-black lg:items-center font-jakarta ">
         <a href="/#why-email-pro" className="ml-auto bg-[#E4DED3]/90 min-w-fit p-1 rounded-xl">
           Why Email Pro?
         </a>

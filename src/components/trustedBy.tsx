@@ -1,10 +1,10 @@
 export default function TrustedBy() {
   return (
-    <div className="w-full p-8 md:p-12 lg:p-24 h-fit flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
+    <div className="w-full p-8 md:p-12 lg:p-24 h-fit flex flex-col justify-center items-center gap-5 lg:gap-10">
       <h1 className="font-jakarta font-bold text-4xl text-black min-w-fit">
         Trusted by:
       </h1>
-      <div className="grid grid-cols-2 md:flex gap-4 group flex-grow min-w-fit flex-wrap">
+      <div className="grid grid-cols-2 md:flex gap-4 group flex-grow min-w-fit flex-wrap justify-center items-center">
         <div className="group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
