@@ -12,7 +12,7 @@ export default function Pricing() {
           Flexible Plans to Fit Your Needs
         </h1>
         <h4 className="text-base md:text-xl md:pt-2 text-[#555555] max-w-lg lg:max-w-2xl text-center px-8 sm:px-4">
-          Whether you're just starting out or have a large subscriber base, we
+          Whether you are just starting out or have a large subscriber base, we
           have a plan that will meet your email marketing needs and budget.
         </h4>
       </div>

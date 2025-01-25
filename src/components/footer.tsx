@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="w-screen h-fit py-10 px-8 md:px-16 lg:px-24 flex flex-col items-center bg-black border-t-2 border-dashed border-[#EFECE6]">
@@ -117,10 +119,10 @@ export default function Footer() {
             <h1 className="text-xl font-bold">Contact Us</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>
-                <a href="mailto:hello@emailpro.com" className="underline">hello@email.pro</a>
+                <Link href="mailto:hello@emailpro.com" className="underline">hello@email.pro</Link>
               </h4>
               <h4>
-                <a href="tel:+919876543210" className="underline">+919876543210</a>
+                <Link href="tel:+919876543210" className="underline">+919876543210</Link>
               </h4>
             </div>
           </div>

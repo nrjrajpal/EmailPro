@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#E4DED3]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased bg-[#E4DED3]`}
       >
         <div className="w-full flex justify-center overflow-x-hidden">
           <Navigation />

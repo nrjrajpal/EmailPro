@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState, useEffect } from "react"
 
 export default function Navigation() {
@@ -36,15 +37,15 @@ export default function Navigation() {
           </span>
         </div>
         <div className="hidden lg:grid lg:grid-cols-3 text-base text-black lg:items-center font-jakarta ">
-          <a href="/#why-email-pro" className="ml-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl">
+          <Link href="/#why-email-pro" className="ml-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl">
             Why Email Pro?
-          </a>
-          <a href="/#pricing" className="mx-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl ">
+          </Link>
+          <Link href="/#pricing" className="mx-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl ">
             Pricing
-          </a>
-          <a href="/#faqs" className="mr-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl ">
+          </Link>
+          <Link href="/#faqs" className="mr-auto bg-[#E4DED3]/90 underline min-w-fit p-1 rounded-xl ">
             FAQs
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-end pr-4 lg:pr-8 h-full">
           <button className="text-white bg-black rounded-full text-lg px-4 py-1 hidden lg:block">Sign in / Sign up</button>
@@ -85,27 +86,27 @@ export default function Navigation() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-          <a
+          <Link
             href="/#why-email-pro"
             className="text-black text-4xl underline font-bold text-center mb-6 font-jakarta transition-colors hover:text-gray-600"
             onClick={toggleMenu}
           >
             Why Email Pro?
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#pricing"
             className="text-black text-4xl underline font-bold text-center mb-6 font-jakarta transition-colors hover:text-gray-600"
             onClick={toggleMenu}
           >
             Pricing
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#faqs"
             className="text-black text-4xl underline font-bold text-center mb-6 font-jakarta transition-colors hover:text-gray-600"
             onClick={toggleMenu}
           >
             FAQs
-          </a>
+          </Link>
           <button className="text-white bg-black rounded-full text-xl px-6 py-2 mt-4 transition-colors hover:bg-gray-800">
             Sign in / Sign up
           </button>

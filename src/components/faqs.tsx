@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 
 interface FAQItem {
@@ -63,7 +64,8 @@ export default function FAQs() {
           Frequently Asked Questions
         </h1>
         <h4 className="text-base md:text-xl md:pt-2 text-[#EFECE6] max-w-xl lg:max-w-3xl text-center px-8 sm:px-4">
-          Contact our team via <a href="mailto:support@emailpro.com" className="underline">support@email.pro</a> you have other questions
+          
+          Contact our team via <Link href="mailto:support@emailpro.com" className="underline">support@email.pro</Link> you have other questions
         </h4>
       </div>
       <div className="space-y-4 max-w-screen-2xl mx-4">

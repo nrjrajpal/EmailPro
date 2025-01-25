@@ -6,7 +6,7 @@ export default function WhyEmailPro() {
           Why Email Pro?
         </h1>
         <h4 className="text-base md:text-lg md:pt-2 text-[#555555] max-w-lg lg:max-w-xl text-center px-4">
-          "Email Pro" is designed to address these common pain points,
+          Email Pro is designed to address these common pain points,
           empowering users to streamline their email marketing efforts and
           achieve better results
         </h4>
