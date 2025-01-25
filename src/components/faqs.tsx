@@ -73,12 +73,12 @@ export default function FAQs() {
             <div
               key={faq.id}
               className={`rounded-lg transition-all duration-300 ease-in-out overflow-hidden
-                ${expandedId === faq.id ? "bg-[#EFECE6]" : "border-2 border-[#555555] hover:bg-[#222222]"}`}
+                ${expandedId === faq.id ? "bg-[#E4DED3]" : "border-2 border-[#555555] hover:bg-[#222222]"}`}
             >
               <button onClick={() => toggleQuestion(faq.id)} className="w-full text-left p-4 sm:p-6">
                 <div className="flex justify-between items-center">
                   <span
-                    className={`text-base sm:text-lg font-medium pr-4 sm:pr-8 transition-colors duration-300
+                    className={`text-lg sm:text-xl font-medium pr-4 sm:pr-8 transition-colors duration-300
                     ${expandedId === faq.id ? "text-black" : "text-white"}`}
                   >
                     {faq.question}
@@ -107,7 +107,7 @@ export default function FAQs() {
                   ${expandedId === faq.id ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
               >
                 <div className="overflow-hidden">
-                  <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-gray-700 text-sm sm:text-base">{faq.answer}</div>
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-gray-800 text-base">{faq.answer}</div>
                 </div>
               </div>
             </div>

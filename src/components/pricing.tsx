@@ -52,7 +52,7 @@ export default function Pricing() {
               />
             </div>
             <div className="flex flex-col mt-2">
-              <button className="text-[#EFECE6] bg-black py-2 rounded-full text-2xl font-jakarta">
+              <button className="text-[#EFECE6] bg-black py-2 rounded-full text-2xl font-jakarta hover:bg-slate-700 border-4 border-black transition-all duration-300">
                 Sign Up
               </button>
             </div>
@@ -100,7 +100,7 @@ export default function Pricing() {
               />
             </div>
             <div className="flex flex-col mt-2">
-              <button className="text-black bg-[#EFECE6] py-2 rounded-full text-2xl font-jakarta">
+              <button className="text-black bg-[#EFECE6] py-2 rounded-full text-2xl font-jakarta hover:bg-[#EFECE6]/85 border-4 border-[#EFECE6] transition-all duration-300">
                 Sign Up
               </button>
             </div>
@@ -142,7 +142,7 @@ export default function Pricing() {
               <PricingFeature text="Custom integrations" tickcolour="#101214" />
             </div>
             <div className="flex flex-col mt-2">
-              <button className="text-[#EFECE6] bg-black py-2 rounded-full text-2xl font-jakarta">
+              <button className="text-[#EFECE6] bg-black py-2 rounded-full text-2xl font-jakarta hover:bg-slate-700 border-4 border-black transition-all duration-300">
                 Contact Sales
               </button>
             </div>
