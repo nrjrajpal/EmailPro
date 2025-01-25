@@ -1,6 +1,6 @@
 export default function TrustedBy() {
   return (
-    <div className="w-full p-8 md:p-12 lg:p-24 h-fit flex flex-col justify-center items-center gap-5 lg:gap-10">
+    <div className="w-full p-8 pt-12 md:p-12 lg:p-24 h-fit flex flex-col justify-center items-center gap-5 lg:gap-10">
       <h1 className="font-jakarta font-bold text-4xl text-black min-w-fit">
         Trusted by:
       </h1>

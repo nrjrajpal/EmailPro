@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <div className="hero w-full flex flex-col justify-center items-center h-fit pt-12 mt-16 md:pt-[72px] lg:pt-[96px]">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl px-4 sm:w-[615px] md:w-[800px] text-black text-center leading-[42px] lg:leading-[72px] !font-jakarta">
+        <div className="hero w-full flex flex-col justify-center items-center h-fit mt-36 md:mt-16 md:pt-[72px] lg:pt-[96px]">
+          <h1 className="text-[42px] sm:text-5xl md:text-6xl px-4 sm:w-[615px] md:w-[800px] text-black text-center leading-[50px] lg:leading-[72px] !font-jakarta">
             <b>Create</b>, <b>Send</b>, and <b>Track</b> professional looking{" "}
             <b>email campaigns</b> with ease
           </h1>
@@ -17,7 +17,7 @@ export default function Hero() {
               Sign up
             </button>
           </div>
-          <div className="flex sm:hidden w-full px-[5%] pt-[42px] justify-center">
+          <div className="flex sm:hidden w-full px-[5%] pt-8 justify-center">
             <button className="py-2 h-fit w-full max-w-[400px] bg-black rounded-full text-2xl text-white">
               Sign up
             </button>
@@ -26,7 +26,7 @@ export default function Hero() {
             Email Pro{"\u2122"} is the perfect solution for anyone looking to
             improve their email marketing efforts.
           </p>
-          <div className="h-auto w-[90%] relative pt-[42px]">
+          <div className="h-auto w-[90%] relative pt-[32px]">
             <Image
               src="https://pxc1hd7esl.ufs.sh/f/t96e14fjGwQPJGSxZSauGrz53PU10cth4CYlpnOwNVXBf2DL"
               alt="email pro app mockup"

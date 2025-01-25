@@ -30,11 +30,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="!scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#E4DED3]`}
       >
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center overflow-x-hidden">
           <Navigation />
           {children}
         </div>
