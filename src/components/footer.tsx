@@ -128,7 +128,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <h1 className="pt-8 text-[#EFECE6] w-full">Copyright {"\u00A9"} Sanic Studios</h1>
+      <h1 className="pt-8 text-[#EFECE6] w-full max-w-screen-2xl">Copyright {"\u00A9"} Sanic Studios</h1>
     </footer>
   );
 }
