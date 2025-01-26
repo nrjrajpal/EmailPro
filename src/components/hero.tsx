@@ -47,7 +47,7 @@ export default function Hero() {
       </p>
       <div className="hero-image opacity-0 h-auto w-[90%] relative pt-[32px]">
         <Image
-          src="https://pxc1hd7esl.ufs.sh/f/t96e14fjGwQPJGSxZSauGrz53PU10cth4CYlpnOwNVXBf2DL"
+          src="https://pxc1hd7esl.ufs.sh/f/t96e14fjGwQPTN5ioFVD4UnPh3eA2J8sWLyFlorCcQMgmaIN"
           alt="email pro app mockup"
           width={0} // width and height set to auto
           height={0}
