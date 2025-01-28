@@ -119,7 +119,7 @@ export default function Footer() {
             <h1 className="text-xl font-bold">Contact Us</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>
-                <Link href="mailto:hello@emailpro.com" className="underline">hello@email.pro</Link>
+                <Link href="mailto:hello@email.pro" className="underline">hello@email.pro</Link>
               </h4>
               <h4>
                 <Link href="tel:+919876543210" className="underline">+919876543210</Link>

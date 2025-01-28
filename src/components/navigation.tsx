@@ -35,7 +35,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="navigation opacity-0 fixed h-24 w-full flex justify-center items-center navbar-effect z-10 pb-2 ">
+      <nav className="navigation opacity-0 fixed h-24 w-full flex justify-center items-center navbar-effect z-10 pb-6 ">
         <div className=" grid grid-cols-[70%_30%] lg:grid-cols-[30%_40%_30%] max-w-screen-2xl w-full h-fit items-center">
           <div className="flex ml-5 sm:ml-8 md:left-auto items-center gap-2 sm:gap-0 h-fit bg-[#E4DED3]/90 w-fit rounded-xl p-1">
             <svg

@@ -71,7 +71,7 @@ export default function FAQs() {
           </h1>
           <h4 className="text-base md:text-xl md:pt-2 text-[#EFECE6] max-w-xl lg:max-w-3xl text-center px-8 sm:px-4">
             Contact our team via{" "}
-            <Link href="mailto:support@emailpro.com" className="underline">
+            <Link href="mailto:support@email.pro" className="underline">
               support@email.pro
             </Link>{" "}
             you have other questions
