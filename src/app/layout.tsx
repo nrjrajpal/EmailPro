@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation";
+import { CSPostHogProvider } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,14 +32,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased bg-[#E4DED3]`}
-      >
-        <div className="w-full flex justify-center overflow-x-hidden">
-          <Navigation />
-          {children}
-        </div>
-      </body>
+      <CSPostHogProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased bg-[#E4DED3]`}
+        >
+          <div className="w-full flex justify-center overflow-x-hidden">
+            <Navigation />
+            {children}
+          </div>
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
