@@ -52,6 +52,7 @@ export default function Hero() {
           width={0} // width and height set to auto
           height={0}
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          priority
         />
       </div>
     </div>
