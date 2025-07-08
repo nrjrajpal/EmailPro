@@ -42,7 +42,7 @@ export default function WhyEmailPro() {
     // Animate cards (each card triggers individually as it enters viewport)
     if (cardsRef.current) {
       const cardElements = cardsRef.current.querySelectorAll(".why-card");
-      cardElements.forEach((card, i) => {
+      cardElements.forEach((card) => {
         gsap.from(card, {
           opacity: 0,
           scale: 0.85,
