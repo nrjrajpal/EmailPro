@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Hero() {
   return (
@@ -45,14 +46,15 @@ export default function Hero() {
         Email Pro{"\u2122"} is the perfect solution for anyone looking to
         improve their email marketing efforts.
       </p>
-      <div className="hero-image opacity-0 h-auto w-[90%] relative pt-[32px]">
+      <div className="hero-image opacity-0 w-[90%] relative pt-[32px] aspect-[1920/880]">
         <Image
           src="https://pxc1hd7esl.ufs.sh/f/t96e14fjGwQPTN5ioFVD4UnPh3eA2J8sWLyFlorCcQMgmaIN"
           alt="email pro app mockup"
-          width={0} // width and height set to auto
-          height={0}
+          width={1920}
+          height={880}
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
           priority
+          onLoadingComplete={() => { ScrollTrigger.refresh(); }}
         />
       </div>
     </div>

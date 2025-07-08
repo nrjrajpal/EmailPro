@@ -1,11 +1,95 @@
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Footer() {
+  const logoRef = useRef(null);
+  const taglineRef = useRef(null);
+  const socialsRef = useRef<HTMLDivElement | null>(null);
+  const columnsRef = useRef<HTMLDivElement | null>(null);
+  const copyrightRef = useRef(null);
+
+  useGSAP(() => {
+    // Animate logo (svg + text)
+    gsap.from(logoRef.current, {
+      opacity: 0,
+      y: 24,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: logoRef.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate tagline
+    gsap.from(taglineRef.current, {
+      opacity: 0,
+      y: 18,
+      duration: 0.7,
+      delay: 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: taglineRef.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate social icons
+    if (socialsRef.current) {
+      const icons = socialsRef.current.querySelectorAll("svg");
+      gsap.from(icons, {
+        opacity: 0,
+        y: 16,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: socialsRef.current,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    }
+    // Animate link columns
+    if (columnsRef.current) {
+      const columns = columnsRef.current.querySelectorAll('.footer-col');
+      gsap.from(columns, {
+        opacity: 0,
+        y: 24,
+        duration: 1.6,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: columnsRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    }
+    // Animate copyright
+    gsap.from(copyrightRef.current, {
+      opacity: 0,
+      y: 16,
+      duration: 1.5,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: copyrightRef.current,
+        start: "top 95%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  }, []);
+
   return (
     <footer className="w-screen h-fit py-10 px-8 md:px-16 lg:px-24 flex flex-col items-center bg-black border-t-2 border-dashed border-[#EFECE6]">
       <div className="flex flex-col min-[1224px]:flex-row gap-20 min-[1224px]:gap-0 max-w-screen-2xl h-fit w-full">
         <div className="space-y-2 mr-28">
-          <div className="h-fit w-full flex gap-1">
+          <div ref={logoRef} className="h-fit w-full flex gap-1">
             <svg
               width="28"
               height="28"
@@ -20,18 +104,18 @@ export default function Footer() {
                 fill="#EFECE6"
               />
             </svg>
-            <span className="text-2xl text-[#EFECE6] font-jakarta font-semibold drop-shadow-[0px_0px_12px_rgba(181,176,167)] ">
+            <span className="text-2xl text-[#EFECE6] font-jakarta font-semibold hover:drop-shadow-[0px_0px_12px_rgba(181,176,167)] transition-all duration-300">
               EmailPro
             </span>
           </div>
-          <h4 className="text-lg w-max text-[#EFECE6]/90">
+          <h4 ref={taglineRef} className="text-lg w-max text-[#EFECE6]/90">
             Email Pro{"\u2122"} is the perfect solution for
             <br />
             anyone looking to improve their
             <br />
             email marketing efforts.
           </h4>
-          <div className="flex w-fit gap-6 items-end -ml-2 pt-6">
+          <div ref={socialsRef} className="flex w-fit gap-6 items-end -ml-2 pt-6">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 36 36"
@@ -84,8 +168,8 @@ export default function Footer() {
             </svg>
           </div>
         </div>
-        <div className="h-full w-full grid lg:grid-cols-4 grid-cols-2 gap-10">
-          <div className="text-[#EFECE6] w-fit">
+        <div ref={columnsRef} className="h-full w-full grid lg:grid-cols-4 grid-cols-2 gap-10">
+          <div className="footer-col text-[#EFECE6] w-fit">
             <h1 className="text-xl font-bold">Product</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>Features</h4>
@@ -95,7 +179,7 @@ export default function Footer() {
               <h4>Updates</h4>
             </div>
           </div>
-          <div className="text-[#EFECE6] w-fit">
+          <div className="footer-col text-[#EFECE6] w-fit">
             <h1 className="text-xl font-bold">Company</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>About</h4>
@@ -105,7 +189,7 @@ export default function Footer() {
               <h4>Blog</h4>
             </div>
           </div>
-          <div className="text-[#EFECE6] w-fit">
+          <div className="footer-col text-[#EFECE6] w-fit">
             <h1 className="text-xl font-bold">Support</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>Getting started</h4>
@@ -115,7 +199,7 @@ export default function Footer() {
               <h4>Chat support</h4>
             </div>
           </div>
-          <div className="text-[#EFECE6] w-fit">
+          <div className="footer-col text-[#EFECE6] w-fit">
             <h1 className="text-xl font-bold">Contact Us</h1>
             <div className="text-base text-[#EFECE6]/90 space-y-3 mt-8">
               <h4>
@@ -128,7 +212,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <h1 className="pt-8 text-[#EFECE6] w-full max-w-screen-2xl">Copyright {"\u00A9"} Sanic Studios</h1>
+      <h1 ref={copyrightRef} className="pt-8 text-[#EFECE6] w-full max-w-screen-2xl">Copyright {"\u00A9"} Sanic Studios</h1>
     </footer>
   );
 }

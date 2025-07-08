@@ -1,11 +1,59 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 export default function TrustedBy() {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const logosRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    // Animate heading
+    gsap.from(headingRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%", // Trigger later (user scrolls further)
+        toggleActions: "play none none reverse", // Reverse on scroll down, not up
+      },
+    });
+    // Animate logos
+    const logoElements = logosRef.current
+      ? logosRef.current.querySelectorAll(".trusted-logo")
+      : [];
+    gsap.from(
+      gsap.utils.toArray(logoElements),
+      {
+        opacity: 0,
+        scale: 0.8,
+        y: 30,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%", // Trigger later (user scrolls further)
+          toggleActions: "play none none reverse", // Reverse on scroll down, not up
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="w-full p-8 pt-12 md:p-12 lg:p-24 h-fit flex flex-col justify-center items-center gap-5 lg:gap-10">
-      <h1 className="font-jakarta font-bold text-4xl text-black min-w-fit">
+    <div ref={sectionRef} className="w-full p-8 pt-12 md:p-12 lg:p-24 h-fit flex flex-col justify-center items-center gap-5 lg:gap-10">
+      <h1 ref={headingRef} className="font-jakarta font-bold text-4xl text-black min-w-fit">
         Trusted by:
       </h1>
-      <div className="grid grid-cols-2 md:flex gap-4 group flex-grow min-w-fit flex-wrap justify-center items-center">
-        <div className="group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
+      <div ref={logosRef} className="grid grid-cols-2 md:flex gap-4 group flex-grow min-w-fit flex-wrap justify-center items-center">
+        <div className="trusted-logo group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
@@ -23,7 +71,7 @@ export default function TrustedBy() {
             ></path>
           </svg>
         </div>
-        <div className="group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
+        <div className="trusted-logo group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
@@ -43,7 +91,7 @@ export default function TrustedBy() {
             ></path>
           </svg>
         </div>
-        <div className="group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
+        <div className="trusted-logo group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center">
           <svg
             id="logo-76"
             width="100%"
@@ -100,7 +148,7 @@ export default function TrustedBy() {
             ></path>
           </svg>
         </div>
-        <div className="group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center md:row-start-2 md:col-start-2 lg:row-start-1 lg:col-start-4">
+        <div className="trusted-logo group:h-fit p-4 rounded-full w-40 lg:w-56 bg-black flex justify-center items-center md:row-start-2 md:col-start-2 lg:row-start-1 lg:col-start-4">
           <svg
             id="logo-87"
             width="100%"
@@ -154,7 +202,7 @@ export default function TrustedBy() {
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M137.281 30.1819C136.246 30.1819 135.294 29.9811 134.427 29.5794C133.971 29.368 133.559 29.1156 133.191 28.8222V36.3659H128.402V14.4525H133.254V15.5162C133.606 15.2283 133.997 14.9794 134.427 14.7696C135.294 14.3467 136.246 14.1353 137.281 14.1353C138.74 14.1353 140.03 14.4842 141.15 15.1819C142.292 15.8795 143.18 16.8309 143.814 18.036C144.47 19.2411 144.797 20.6153 144.797 22.1586C144.797 23.702 144.47 25.0762 143.814 26.2813C143.18 27.4864 142.292 28.4377 141.15 29.1354C140.03 29.8331 138.74 30.1819 137.281 30.1819ZM136.394 25.8056C137.091 25.8056 137.694 25.647 138.201 25.3299C138.73 25.0128 139.142 24.5793 139.438 24.0297C139.734 23.48 139.882 22.8563 139.882 22.1586C139.882 21.4398 139.734 20.8056 139.438 20.2559C139.142 19.7062 138.73 19.2834 138.201 18.9874C137.694 18.6702 137.102 18.5117 136.425 18.5117C135.749 18.5117 135.146 18.6702 134.618 18.9874C134.11 19.2834 133.709 19.7062 133.413 20.2559C133.117 20.8056 132.969 21.4398 132.969 22.1586C132.969 22.8563 133.106 23.48 133.381 24.0297C133.677 24.5793 134.089 25.0128 134.618 25.3299C135.146 25.647 135.738 25.8056 136.394 25.8056Z"
+              d="M137.281 30.1819C136.246 30.1819 135.294 29.9811 134.427 29.5794C133.971 29.368 133.559 29.1156 133.191 28.8222V36.3659H128.402V14.4525H133.254V15.5162C133.606 15.2283 133.997 14.9794 134.427 14.7696C135.294 14.3467 136.246 14.1353 137.281 14.1353C138.74 14.1353 140.03 14.4842 141.15 15.1819C142.292 15.8795 143.18 16.8309 143.814 18.036C144.47 19.2411 144.797 20.6153 144.797 22.1586C144.797 23.702 144.47 25.0762 143.814 26.2813C143.18 27.4864 142.292 28.4377 141.15 29.1354C140.03 29.8331 138.74 30.1819 137.281 30.1819ZM136.394 25.8056C137.091 25.8056 137.694 25.647 138.201 25.3299C138.73 25.0128 139.142 24.5793 139.438 24.0297C139.734 23.48 139.882 22.8457 139.882 22.1586C139.882 21.4398 139.734 20.8056 139.438 20.2559C139.142 19.7062 138.73 19.2834 138.201 18.9874C137.694 18.6702 137.102 18.5117 136.425 18.5117C135.749 18.5117 135.146 18.6702 134.618 18.9874C134.11 19.2834 133.709 19.7062 133.413 20.2559C133.117 20.8056 132.969 21.4398 132.969 22.1586C132.969 22.8563 133.106 23.48 133.381 24.0297C133.677 24.5793 134.089 25.0128 134.618 25.3299C135.146 25.647 135.738 25.8056 136.394 25.8056Z"
               fill="#E4DED3"
             ></path>
             <path

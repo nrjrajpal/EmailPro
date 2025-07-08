@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Wave from "@/components/wave";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface FAQItem {
   id: number;
@@ -52,9 +56,61 @@ const faqs: FAQItem[] = [
 export default function FAQs() {
   const [expandedId, setExpandedId] = useState<number | null>();
 
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const subheadingRef = useRef(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
   const toggleQuestion = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
   };
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    // Animate heading
+    gsap.from(headingRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate subheading
+    gsap.from(subheadingRef.current, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      delay: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate FAQ cards (each card triggers individually as it enters viewport)
+    if (cardsRef.current) {
+      const cardElements = cardsRef.current.querySelectorAll(".faq-card");
+      cardElements.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          scale: 0.95,
+          y: 40,
+          duration: 0.25,
+          ease: "power4.in",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -62,14 +118,21 @@ export default function FAQs() {
         <Wave />
       </div>
       <div
+        ref={sectionRef}
         id="faqs"
         className="w-screen h-fit py-20 md:py-[72px] md:px-16 lg:p-24 flex flex-col items-center gap-10 md:gap-[72px] bg-black rrounded-t-[75px] lg:rrounded-t-[100px]"
       >
         <div className="flex items-center flex-col text-center max-w-screen-2xl">
-          <h1 className="text-[32px] md:text-5xl lg:text-[56px] leading-9 md:leading-none font-jakarta text-[#EFECE6] font-bold px-12 sm:px-0">
+          <h1
+            ref={headingRef}
+            className="text-[32px] md:text-5xl lg:text-[56px] leading-9 md:leading-none font-jakarta text-[#EFECE6] font-bold px-12 sm:px-0"
+          >
             Frequently Asked Questions
           </h1>
-          <h4 className="text-base md:text-xl md:pt-2 text-[#EFECE6] max-w-xl lg:max-w-3xl text-center px-8 sm:px-4">
+          <h4
+            ref={subheadingRef}
+            className="text-base md:text-xl md:pt-2 text-[#EFECE6] max-w-xl lg:max-w-3xl text-center px-8 sm:px-4"
+          >
             Contact our team via{" "}
             <Link href="mailto:support@email.pro" className="underline">
               support@email.pro
@@ -77,11 +140,11 @@ export default function FAQs() {
             you have other questions
           </h4>
         </div>
-        <div className="space-y-4 max-w-screen-2xl mx-4">
+        <div ref={cardsRef} className="space-y-4 max-w-screen-2xl mx-4">
           {faqs.map((faq) => (
             <div
               key={faq.id}
-              className={`rounded-lg transition-all duration-300 ease-in-out overflow-hidden
+              className={`faq-card rounded-lg transition-all duration-300 ease-in-out overflow-hidden
                 ${
                   expandedId === faq.id
                     ? "bg-[#E4DED3]"

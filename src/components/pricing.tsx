@@ -1,23 +1,91 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 import PricingFeature from "./pricingFeature";
 
 export default function Pricing() {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const subheadingRef = useRef(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    // Animate heading
+    gsap.from(headingRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate subheading
+    gsap.from(subheadingRef.current, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      delay: 0.55,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate cards (each card triggers individually as it enters viewport)
+    if (cardsRef.current) {
+      const cardElements = cardsRef.current.querySelectorAll(".pricing-card");
+      cardElements.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          scale: 0.85,
+          y: 40,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       id="pricing"
       className="w-full h-fit py-16 md:py-[72px] md:px-16 lg:p-24 flex flex-col items-center gap-10 md:gap-[72px]"
     >
       <div className="flex items-center flex-col text-center">
-        <h1 className="text-[32px] md:text-5xl lg:text-[56px] font-jakarta text-black font-bold px-12 sm:px-0">
+        <h1
+          ref={headingRef}
+          className="text-[32px] md:text-5xl lg:text-[56px] font-jakarta text-black font-bold px-12 sm:px-0"
+        >
           Flexible Plans to Fit Your Needs
         </h1>
-        <h4 className="text-base md:text-xl md:pt-2 text-[#555555] max-w-lg lg:max-w-2xl text-center px-8 sm:px-4">
+        <h4
+          ref={subheadingRef}
+          className="text-base md:text-xl md:pt-2 text-[#555555] max-w-lg lg:max-w-2xl text-center px-8 sm:px-4"
+        >
           Whether you are just starting out or have a large subscriber base, we
           have a plan that will meet your email marketing needs and budget.
         </h4>
       </div>
-      <div className="h-fit w-full grid grid-cols-1 min-[1224px]:grid-cols-3 gap-8 justify-items-center px-6">
-        <div className="relative w-full h-fit text-black">
+      <div
+        ref={cardsRef}
+        className="h-fit w-full grid grid-cols-1 min-[1224px]:grid-cols-3 gap-8 justify-items-center px-6"
+      >
+        <div className="pricing-card relative w-full h-fit text-black">
           <div className="absolute bg-black rounded-xl px-4 py-1 flex items-center right-4 top-5">
             <h2 className="text-base min-[1400px]:text-xl text-[#EFECE6]">Free 7-day trial</h2>
           </div>
@@ -58,7 +126,7 @@ export default function Pricing() {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-fit text-[#EFECE6]">
+        <div className="pricing-card relative w-full h-fit text-[#EFECE6]">
           <div className="absolute bg-[#EFECE6] rounded-xl px-4 p-1 flex items-center right-4 top-5">
             <h2 className="text-base min-[1400px]:text-xl text-black">Most popular</h2>
           </div>
@@ -91,8 +159,7 @@ export default function Pricing() {
               />
               <PricingFeature
                 text="Advanced reporting and analytics"
-                tickcolour="#EFECE6"
-              />
+                tickcolour="#EFECE6" />
               <PricingFeature text="A/B testing" tickcolour="#EFECE6" />
               <PricingFeature
                 text="Automated email workflows"
@@ -106,7 +173,7 @@ export default function Pricing() {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-fit text-black">
+        <div className="pricing-card relative w-full h-fit text-black">
           <div className="w-full h-full rounded-2xl absolute bg-black gap -z-10 inset-[10px]"></div>
           <div className="bg-[#EFECE6] border border-black w-full h-fit rounded-2xl flex flex-col p-10 gap-4">
             <h2 className="text-2xl">Enterprise Plan</h2>

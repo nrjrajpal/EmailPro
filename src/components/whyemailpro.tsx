@@ -1,18 +1,91 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 export default function WhyEmailPro() {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const subheadingRef = useRef(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    // Animate heading
+    gsap.from(headingRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate subheading
+    gsap.from(subheadingRef.current, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      delay: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    // Animate cards (each card triggers individually as it enters viewport)
+    if (cardsRef.current) {
+      const cardElements = cardsRef.current.querySelectorAll(".why-card");
+      cardElements.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          scale: 0.85,
+          y: 40,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }
+  }, []);
+
   return (
-    <div className="w-full h-fit py-16 md:py-[72px] md:px-16 lg:px-24 flex flex-col items-center gap-6 lg:gap-[72px]" id="why-email-pro">
+    <div
+      ref={sectionRef}
+      className="w-full h-fit py-16 md:py-[72px] md:px-16 lg:px-24 flex flex-col items-center gap-6 lg:gap-[72px]"
+      id="why-email-pro"
+    >
       <div className="flex items-center flex-col text-center">
-        <h1 className="text-[32px] md:text-5xl lg:text-[56px] font-jakarta text-black font-bold">
+        <h1
+          ref={headingRef}
+          className="text-[32px] md:text-5xl lg:text-[56px] font-jakarta text-black font-bold"
+        >
           Why Email Pro?
         </h1>
-        <h4 className="text-base md:text-lg md:pt-2 text-[#555555] max-w-lg lg:max-w-xl text-center px-4">
+        <h4
+          ref={subheadingRef}
+          className="text-base md:text-lg md:pt-2 text-[#555555] max-w-lg lg:max-w-xl text-center px-4"
+        >
           Email Pro is designed to address these common pain points,
           empowering users to streamline their email marketing efforts and
           achieve better results
         </h4>
       </div>
-      <div className="h-fit w-fit grid grid-cols-1 min-[1224px]:grid-cols-2 gap-8 justify-items-center px-6">
-        <div className="relative">
+      <div
+        ref={cardsRef}
+        className="h-fit w-fit grid grid-cols-1 min-[1224px]:grid-cols-2 gap-8 justify-items-center px-6"
+      >
+        <div className="why-card relative">
           <div className="w-full max-w-[500px] h-48 rounded-2xl absolute bg-black gap -z-10 inset-[10px]"></div>
           <div className="bg-[#EFECE6] border border-black w-full max-w-[500px] h-48 rounded-2xl flex items-center justify-between p-10 gap-8">
             <div className="flex flex-col gap-6 max-w-72">
@@ -232,7 +305,7 @@ export default function WhyEmailPro() {
             </svg>
           </div>
         </div>
-        <div className="relative">
+        <div className="why-card relative">
           <div className="w-full max-w-[500px] h-48 rounded-2xl absolute bg-[#555555] gap -z-10 inset-[10px]"></div>
           <div className="bg-black border border-black w-full max-w-[500px] h-48 rounded-2xl flex items-center justify-between p-10 gap-8">
             <div className="flex flex-col gap-6 max-w-72">
@@ -649,12 +722,12 @@ export default function WhyEmailPro() {
             </svg>
           </div>
         </div>
-        <div className="relative">
+        <div className="why-card relative">
           <div className="w-full max-w-[500px] h-48 rounded-2xl absolute bg-[#555555] gap -z-10 inset-[10px]"></div>
           <div className="bg-black border border-black w-full max-w-[500px] h-48 rounded-2xl flex items-center justify-between p-10 gap-8">
             <div className="flex flex-col gap-6 max-w-72">
               <h1 className="text-3xl text-[#EFECE6] font-bold font-jakarta">
-                Automating Email Campaigns
+                Lack of Analytical Insights
               </h1>
               <div className="flex gap-2 items-center">
                 <svg
@@ -1066,7 +1139,7 @@ export default function WhyEmailPro() {
             </svg>
           </div>
         </div>
-        <div className="relative">
+        <div className="why-card relative">
           <div className="w-full max-w-[500px] h-48 rounded-2xl absolute bg-black gap -z-10 inset-[10px]"></div>
           <div className="bg-[#EFECE6] border border-black w-full max-w-[500px] h-48 rounded-2xl flex items-center justify-between p-10 gap-8">
             <div className="flex flex-col gap-6 max-w-72">
